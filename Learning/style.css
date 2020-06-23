@@ -1,0 +1,349 @@
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    margin:0;
+    font-family:'Segoe UI', Tahoma, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    line-height:#333;
+    overflow:hidden;      /*For Hiding horizonatal scroll bars*/    
+    
+}
+
+.outer-container{
+    width:100%;
+    height:100%;
+    /* CSS Smooth Scroll */
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type:y mandatory;
+    position: relative;
+}
+.outer-container{
+    z-index:3;
+}
+
+
+
+.v-header{
+    height:100vh;           /*whole browser (vh or vw)*/
+    display:flex;
+    align-items: center;
+    color:#fff;
+
+}
+
+.container{
+    max-width:960px;
+    padding-left:1rem;
+    padding-right:1rem;
+    margin:auto;
+    text-align:center;
+}
+
+.fullscreen-video-wrap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    overflow:hidden;              /*No scroll bars*/
+    
+}
+
+/* To set the video's height and width to a 100% */
+
+.fullscreen-video-wrap video{
+    min-width:100%;
+    min-height:100%;
+}
+
+.header-overlay{
+    height: 100vh;      /* percentage-based units are based on the parent element while vh and vw style units are based on viewport*/
+    width:100vw;        /* vh = for height value  vw = for width value */
+    position:absolute;
+    top:0;
+    left:0;    
+    background-color: #000000;;
+
+    /* All of the above style attributes will cover the video. So we need to add opacity property */
+
+    z-index:1; /*This is to make sure that the content is always on top of the video,the higher the value the closer it is to you.Negative values are for when we want to place the content behind, far back*/
+
+    opacity:0.55;  
+
+}
+
+.header-content{
+    /*To bring the hidden text forward use the z property */
+    z-index:2 ;
+
+}
+
+.header-content h1{
+    font-size:50px;
+    margin-bottom:0;
+    padding-top: 4rem;
+}
+
+.header-content p{
+    font-size:1.5rem;
+    display:block;
+    padding-bottom: 2rem;
+}
+
+.btn{
+    background:#34b3a0;
+    font-size:1rem;
+    padding:0.1rem 2rem;
+    padding-bottom: 0.1rem;
+    text-decoration: none;    
+}
+
+
+/*to make the heading and video more responsive */
+
+@media(max-width:1198px){
+    /* whenever it is under 1198px: */
+    .container {
+        padding-right : 3rem;
+    }
+    .fullscreen-video-wrap video{
+        max-width:100%;
+        max-height:100%;
+    }
+    
+}
+/* NAV BAR STYLING */
+
+nav{
+    height:10vh;
+    /* // */
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    width:50%;
+    background:rgba(240, 248, 255, 0.3);
+    height:10%;
+    justify-content:space-around;
+    align-items: center;
+    margin-left:auto;
+    position:absolute;
+    top:0;
+    right:0;
+    /* // */
+
+}
+
+.listcontent{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    /* // */
+}
+
+.listcontent:hover{
+    color:skyblue;
+}
+
+.landing{
+    flex-direction: column;
+    width:100%;
+    height:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    scroll-snap-align:center;
+}
+
+.section-a{
+    flex-direction: column;
+    width:100%;
+    height:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    scroll-snap-align:center;
+}
+
+.section-b{
+    flex-direction: column;
+    width:100%;
+    height:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    scroll-snap-align:center;
+}
+
+.landing h1{
+    margin:100px;
+    font-size:50px;
+    color: #ae5fce;
+}
+
+.line{
+    width:30px;
+    height:3px;
+    background:black;
+    margin:5px;
+}
+
+nav{
+     position:relative;
+     
+}
+
+.hamburger{
+    position: fixed;
+    cursor:pointer;
+    right:2%;
+    top:2%;
+    
+    transform:translate(-2%,-4%);
+    z-index:2;
+}
+
+.nav-links{
+  position:fixed; /* Always want it to be on top */
+  background:rgba(224, 221, 44, 0.3) ;
+  height:100vh;
+  width:100%;
+  flex-direction:column;   
+  clip-path:circle(9px at 90% -10%);          /* A circular mask that expands to cover the whole screen first parameter refers to the circle size the other parameters refer to posiion the first being right and the other being top */
+  -webkit-clip-path: circle(9px at 90% -10%); 
+  transition:all 1s ease-out;
+  pointer-events: none;
+  
+}
+
+.nav-links.open{
+    clip-path: circle(1300px at 90% -10%);         
+    -webkit-clip-path: circle(1300px at 90% -10%);
+    pointer-events: all;
+}
+
+.landing{
+    flex-direction:column;
+}
+
+.nav-links li{
+    opacity: 0;
+    width:50px;
+}
+
+.nav-links li:hover{
+    width:300px;
+}
+
+
+
+
+.nav-links li:nth-child(1){      /*Getting the list contents*/
+    transition:all 0.5s ease 0.2s;
+}
+.nav-links li:nth-child(2){
+    transition:all 0.5s ease 0.2s;
+}
+.nav-links li:nth-child(3){
+    transition:all 0.5s ease 0.2s;
+}
+.nav-links li:nth-child(4){
+    transition:all 0.5s ease 0.2s;
+}
+
+li.fade{
+    opacity:1;
+}
+
+
+li.gone{
+    opacity:0;
+}
+@media screen and (max-width:768px){
+    .line{
+        width:30px;
+        height:3px;
+        background:white;
+        margin:5px;
+    }
+
+    nav{
+         position:relative;
+    }
+
+    .hamburger{
+        position: fixed;
+        cursor:pointer;
+        right:2%;
+        top:2%;
+        padding:20px;
+        transform:translate(-2%,-4%);
+        z-index:2;
+    }
+
+    .nav-links{
+      position:fixed;
+      background:lightcoral;
+      height:100vh;
+      width:100%;
+      flex-direction:column;   
+      clip-path:circle(9px at 90% -2%);          /* A circular mask that expands to cover the whole screen first parameter refers to the circle size the other parameters refer to posiion the first being right and the other being top */
+      -webkit-clip-path: circle(9px at 90% -2%); 
+      transition:all 1s ease-out;
+      pointer-events: none;
+      
+    }
+
+    .nav-links.open{
+        clip-path: circle(1000px at 120% -10%);         
+        -webkit-clip-path: circle(1000px at 120% -10%);
+        pointer-events: all;
+    }
+
+    .landing{
+        flex-direction:column;
+    }
+
+    .nav-links li{
+        opacity: 0;
+        width:50px;
+    }
+
+    .nav-links li:hover{
+        width:300px;
+    }
+
+    .listcontent{
+        font-size:25px;
+    }
+
+    .listcontent:hover{
+        color:skyblue;
+    }
+
+    .nav-links li:nth-child(1){      /*Getting the list contents*/
+        transition:all 0.5s ease 0.2s;
+    }
+    .nav-links li:nth-child(2){
+        transition:all 0.5s ease 0.2s;
+    }
+    .nav-links li:nth-child(3){
+        transition:all 0.5s ease 0.2s;
+    }
+    .nav-links li:nth-child(4){
+        transition:all 0.5s ease 0.2s;
+    }
+    
+    li.fade{
+        opacity:1;
+    }
+}
